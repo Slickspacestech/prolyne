@@ -98,8 +98,8 @@ Submission Date: ${new Date().toLocaleString('en-US', { timeZone: 'America/Vanco
       },
       body: JSON.stringify({
         api_key: process.env.SMTP2GO_API_KEY,
-        to: ['info@prolyne.ca'],
-        sender: 'noreply@prolyne.ca',
+        to: ['info@prolyneconsulting.com'],
+        sender: 'noreply@prolyneconsulting.com',
         subject: 'New Contact Form Submission',
         text_body: emailText,
         html_body: emailHtml
