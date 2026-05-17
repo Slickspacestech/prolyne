@@ -96,26 +96,24 @@
       submitBtn.disabled = true;
       submitBtn.textContent = "Sending…";
 
-      const data = new URLSearchParams({ name, email, phone, message });
-
-      fetch("send_email.php", {
+      fetch("/.netlify/functions/contact-form", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: data.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, message }),
       })
         .then(function (res) {
-          return res.text().then(function (text) {
-            return { ok: res.ok, text: text };
+          return res.json().then(function (json) {
+            return { ok: res.ok, json: json };
           });
         })
         .then(function (result) {
-          if (result.ok) {
+          if (result.ok && result.json.success) {
             formStatus.textContent = "Thank you! Your message has been sent.";
             formStatus.className = "form-status success";
             contactForm.reset();
           } else {
             formStatus.textContent =
-              result.text || "Something went wrong. Please try again.";
+              result.json.error || "Something went wrong. Please try again.";
             formStatus.className = "form-status error";
           }
         })

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Recurse -Path \"C:\\\\Users\\\\matt\\\\projects\\\\prolyne\" -Include \"*.astro\", \"*.jsx\", \"*.tsx\", \"*.js\")",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)",
+      "Bash(dir)"
+    ]
+  }
+}
